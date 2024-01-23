@@ -6,13 +6,13 @@
 // Color system
 
 // scss-docs-start gray-color-variables
-$white:    #fff ;
+$white:    #D9D9D9 ;
 $gray-100: #f8f9fa ;
-$gray-200: #e9ecef ;
+$gray-200: #D9D9D9 ;
 $gray-300: #dee2e6 ;
 $gray-400: #ced4da ;
 $gray-500: #adb5bd ;
-$gray-600: #6c757d ;
+$gray-600: #1F1C1C ;
 $gray-700: #495057 ;
 $gray-800: #343a40 ;
 $gray-900: #212529 ;
@@ -298,7 +298,7 @@ $cyans: (
 // fusv-enable
 
 // scss-docs-start theme-color-variables
-$primary:       $blue ;
+$primary:       #3A3A3A ;
 $secondary:     $gray-600 ;
 $success:       $green ;
 $info:          $cyan ;
@@ -797,7 +797,7 @@ $form-text-margin-top:                  .25rem ;
 $form-text-font-size:                   $small-font-size ;
 $form-text-font-style:                  null ;
 $form-text-font-weight:                 null ;
-$form-text-color:                       $text-muted ;
+$form-text-color:                       $white ;
 // scss-docs-end form-text-variables
 
 // scss-docs-start form-label-variables
@@ -805,7 +805,7 @@ $form-label-margin-bottom:              .5rem ;
 $form-label-font-size:                  null ;
 $form-label-font-style:                 null ;
 $form-label-font-weight:                null ;
-$form-label-color:                      null ;
+$form-label-color:                      #3A3A3A ;
 // scss-docs-end form-label-variables
 
 // scss-docs-start form-input-variables
@@ -824,12 +824,12 @@ $input-padding-y-lg:                    $input-btn-padding-y-lg ;
 $input-padding-x-lg:                    $input-btn-padding-x-lg ;
 $input-font-size-lg:                    $input-btn-font-size-lg ;
 
-$input-bg:                              $body-bg ;
+$input-bg:                              #3A3A3A ;
 $input-disabled-color:                  null ;
 $input-disabled-bg:                     $gray-200 ;
 $input-disabled-border-color:           null ;
 
-$input-color:                           $body-color ;
+$input-color:                          #ffff ;
 $input-border-color:                    $gray-400 ;
 $input-border-width:                    $input-btn-border-width ;
 $input-box-shadow:                      $box-shadow-inset ;

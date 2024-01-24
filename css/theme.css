@@ -7,6 +7,27 @@
   max-width: 100px;
 }
 
+form {
+  max-width: 300px;
+  width: 100%;
+  margin: auto;
+}
+
+.container {
+  border-radius: 30px;
+  padding: 20px;
+  width: 350px;
+}
+
+.smaller img {
+  max-width: 70px;
+}
+
+.container img {
+  max-width: 180px;
+  border-radius: 50%;
+}
+
 /*!
  * Bootstrap  v5.3.2 (https://getbootstrap.com/)
  * Copyright 2011-2023 The Bootstrap Authors
@@ -657,13 +678,13 @@ progress {
 }
 
 .display-6 {
-  font-size: calc(1.375rem + 1.5vw);
+  font-size: calc(1.3rem + 0.6vw);
   font-weight: 300;
   line-height: 1.2;
 }
 @media (min-width: 1200px) {
   .display-6 {
-    font-size: 2.5rem;
+    font-size: 1.75rem;
   }
 }
 

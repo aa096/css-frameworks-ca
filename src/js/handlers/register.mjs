@@ -5,7 +5,10 @@ export function setRegisterFormListener() {
         event.preventDefault()
         const form = event.target;
         const formData = new FormData(form);
-        const profile = Object.fromEntries(formData.entries())
-        console.log('It worked');
+        const profile = Object.fromEntries(formData.entries())  
+        const action = form.action; 
+        const method = form.method;
+        
+        register (profile, action, method)
     })
 }

@@ -21,11 +21,13 @@ export async function login(profile) {
   storage.save("token", accessToken);
   storage.save("profile", user);
 
-  if (accessToken) {
-    setTimeout(() => {
-      window.location.href = "../../../profile/index.html";
-    }, 2000);
-  } else {
-    throw new Error("No access token was provided, please register");
-  }
 }
+
+//   if (accessToken) {
+//     setTimeout(() => {
+//       window.location.href = "../../../profile/index.html";
+//     }, 2000);
+//   } else {
+//     throw new Error("No access token was provided, please register");
+//   }
+// }

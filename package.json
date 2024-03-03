@@ -6,7 +6,7 @@
     "test": "echo \"We will learn more about testing in the Workflow course\" && exit 1",
     "build": "sass src/scss:css",
     "watch": "sass --watch src/scss:css",
-    "dev": "npm run watch & live-server"
+    "start": "npm run build && live-server"
   },
   "repository": {
     "type": "git",

@@ -1,8 +1,8 @@
 import { setRegisterFormListener } from "./handlers/register.mjs";
 import { setLoginFormListener } from "./handlers/login.mjs"; 
-import { createPost } from "./api/posts/index.mjs";
+import * as templates from "./templates/index.mjs";
+import * as postMethods from "./api/posts/index.mjs"
 
-import * as posts from "./api/posts/index.mjs";
 
 document.addEventListener("DOMContentLoaded", () => {  
     const path = location.pathname;
@@ -14,8 +14,11 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 });
 
-createPost( {
-    title: "Example Post",
-    body: "Also an example"
-})
+async function testTemplate() {
+    const posts = await postMethods.getPosts()
+    const post = posts[45]
+    const container = document.querySelector("#post-container");
+    templates.renderPostTemplates(posts, container)
+}
 
+testTemplate()

@@ -23,11 +23,3 @@ export async function login(profile) {
 
 }
 
-//   if (accessToken) {
-//     setTimeout(() => {
-//       window.location.href = "../../../profile/index.html";
-//     }, 2000);
-//   } else {
-//     throw new Error("No access token was provided, please register");
-//   }
-// }

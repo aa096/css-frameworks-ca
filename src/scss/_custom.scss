@@ -67,3 +67,7 @@ input:invalid + .help {
         padding: 10px;
     }
 }
+
+.form-control:disabled {
+    cursor: not-allowed;
+}

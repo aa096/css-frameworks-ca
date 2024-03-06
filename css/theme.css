@@ -51,6 +51,10 @@ input:invalid + .help {
   padding: 10px;
 }
 
+.form-control:disabled {
+  cursor: not-allowed;
+}
+
 /*!
  * Bootstrap  v5.3.2 (https://getbootstrap.com/)
  * Copyright 2011-2023 The Bootstrap Authors
@@ -2196,7 +2200,7 @@ progress {
   opacity: 1;
 }
 .form-control:disabled {
-  background-color: #D9D9D9;
+  background-color: #8f8e8e;
   opacity: 1;
 }
 .form-control::file-selector-button {
@@ -2657,7 +2661,7 @@ textarea.form-control-lg {
 }
 .form-floating > :disabled ~ label::after,
 .form-floating > .form-control:disabled ~ label::after {
-  background-color: #D9D9D9;
+  background-color: #8f8e8e;
 }
 
 .input-group {

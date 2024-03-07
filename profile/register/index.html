@@ -33,9 +33,7 @@
                 <form id="register-form">
                     <div class="mb-3">
                         <label for="Name" class="form-label">Name</label>
-                        <input type="text" name="name" class="form-control" id="name" required pattern="^[\w]+$" title="Name must only contain lower case and upper case letters, numbers and underscore (_) Example: User_123">
-                        <div class="help">Please enter your name using only upper- and lowercase letters, numbers and underscore (_)</div>
-                    </div>
+                        <input type="text" name="name" class="form-control" id="name" required pattern="^[\w]+$" title="Name must only contain lower case and upper case letters, numbers and underscore (_) Example: User_123">      
                     <div class="mb-3">
                         <label for="Email" class="form-label">Email</label>
                         <input type="text" name="email" class="form-control" id="Email" required pattern="^[\w\-.]+@(stud.)?noroff.no$" title="Only @(stud.)noroff.no domains are allowed to register">
@@ -52,7 +50,13 @@
                         <label for="Avatar" class="form-label">Avatar</label>
                         <input type="url" name="avatar" class="form-control">
                     </div>
-                    <button type="submit" class="btn btn-primary">Register</button>
+                    <div class="text-center">
+                        <button type="submit" class="btn btn-primary mt-2">Register</button>
+                    </div>
+                    <div class="text-center">
+                        <p class="pt-3 darker">Already have an account?</p>
+                        <a href="/index.html"><p class="btn btn-primary">Log in Here</p></a>
+                    </div>
                 </form>
             </div>
         </section>

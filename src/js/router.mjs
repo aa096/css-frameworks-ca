@@ -1,4 +1,5 @@
 import * as listners from "./handlers/index.mjs";
+import { showPosts, showProfile } from "./display.mjs";
 
 export function router() {
 const path = location.pathname;
@@ -18,6 +19,12 @@ switch (path) {
         return;
     case "/profile/edit/":
         listners.setUpdateProfileFormListener()
+        return;
+    case "/posts/":
+        showPosts()
+        return;
+    case "/profile/":
+        showProfile()
         return;
     }
 }

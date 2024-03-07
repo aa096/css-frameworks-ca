@@ -44,6 +44,10 @@ form {
     border-radius: 30px;
 }
 
+.col-lg-8 {
+    border-radius: 30px;
+}
+
 .user {
     img {
         max-width: 100px;
@@ -62,12 +66,21 @@ input:invalid + .help {
 
 .p-2 {
     img {
-        @extend .img-fluid;
-        max-width: 600px;
+        max-width: 100%;
         padding: 10px;
     }
 }
 
 .form-control:disabled {
     cursor: not-allowed;
+}
+
+
+.darker {
+    color: #333333;
+    text-transform: uppercase;
+}
+
+.error {
+    color: #333333;
 }

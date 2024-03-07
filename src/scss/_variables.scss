@@ -406,11 +406,11 @@ $body-text-align:           null ;
 //
 // Style anchor elements.
 
-$link-color:                              $primary ;
-$link-decoration:                         underline ;
-$link-shade-percentage:                   20% ;
-$link-hover-color:                        shift-color($link-color, $link-shade-percentage) ;
-$link-hover-decoration:                   null ;
+$link-color:                              $white ;
+$link-decoration:                         none ;
+$link-shade-percentage:                   100% ;
+$link-hover-color:                        $primary ;
+$link-hover-decoration:                   none;
 
 $stretched-link-pseudo-element:           after ;
 $stretched-link-z-index:                  1 ;
@@ -600,7 +600,7 @@ $display-font-sizes: (
   2: 4.5rem,
   3: 4rem,
   4: 20px,
-  5: 18px,
+  5: 15px,
   6: 28px
 ) ;
 

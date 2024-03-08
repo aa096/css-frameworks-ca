@@ -1,15 +1,19 @@
 import { load } from "../storage/index.mjs";
 import { removePost } from "../api/posts/delete.mjs";
 
-document.addEventListener("DOMContentLoaded", function () {
-  const createPostButton = document.getElementById("createPostButton");
+  const createPostButton = document.querySelector("#createPostButton");
   const createPostForm = document.getElementById("createPost");
+  const caretIcon = document.getElementById("caretIcon");
 
+  if (createPostButton) {
   createPostButton.addEventListener("click", function () {
     // Toggle the visibility of the createPost form
     createPostForm.classList.toggle("hidden");
+
+    caretIcon.classList.toggle("fa-caret-up");
+    caretIcon.classList.toggle("fa-caret-down");
   });
-});
+  }
 
 const container1 = document.querySelector("#post-container");
 

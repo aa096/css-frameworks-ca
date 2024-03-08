@@ -29,6 +29,20 @@ export function postTemplate(postData) {
   pText.textContent = postData.body;
   pText.classList.add("text-center");
 
+  const dateObject = new Date(postData.created);
+  const options = {
+    year: "numeric",
+    month: "numeric",
+    day: "numeric",
+    hour: "numeric",
+    minute: "numeric",
+  };
+  const formattedDate = dateObject.toLocaleString(undefined, options);
+
+  const published = document.createElement("p");
+  published.textContent = `Published: ${formattedDate}`;
+  published.classList.add("published");
+
   const userDiv = document.createElement("div");
   userDiv.classList.add(
     "d-flex",
@@ -49,9 +63,9 @@ export function postTemplate(postData) {
     imgAvatar.src = postData.author.avatar;
     imgAvatar.alt = `avatar of user ${postData.author.name}`;
     userDiv.appendChild(imgAvatar);
-}
+  }
 
-const h3UserName = document.createElement("h3");
+  const h3UserName = document.createElement("h3");
   h3UserName.classList.add("display-4");
   h3UserName.textContent = postData.author.name;
   userDiv.appendChild(h3UserName);
@@ -61,18 +75,17 @@ const h3UserName = document.createElement("h3");
     img.src = postData.media;
     img.alt = `Image from ${postData.title}`;
     p2Div.appendChild(img);
-}
+  }
 
   p2Div.appendChild(h2Title);
   p2Div.appendChild(pText);
+  p2Div.appendChild(published);
 
   innerDiv.appendChild(p2Div);
   div1.appendChild(innerDiv);
   div1.appendChild(userDiv);
 
-
   idLink.appendChild(div1);
-  
 
   postContainer.appendChild(idLink);
 

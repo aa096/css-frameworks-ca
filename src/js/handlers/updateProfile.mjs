@@ -6,7 +6,7 @@ export async function setUpdateProfileFormListener() {
 
   const { name, email } = load("profile");
   document.getElementById("profileName").textContent = name;
- 
+
   if (form) {
     form.name.value = name;
     form.email.value = email;
@@ -19,9 +19,20 @@ export async function setUpdateProfileFormListener() {
     form.banner.value = profile.banner;
     form.avatar.value = profile.avatar;
 
-    button.disabled = false; 
+    const updateButtonState = () => {
+      const avatarValue = form.avatar.value.trim();
+      const bannerValue = form.banner.value.trim();
+      button.disabled = !avatarValue && !bannerValue;
+    };
 
-    form.addEventListener("submit", (event) => {
+    // Enable/disable the button on input changes
+    form.avatar.addEventListener("input", updateButtonState);
+    form.banner.addEventListener("input", updateButtonState);
+
+    // Initial button state
+    updateButtonState();
+
+    form.addEventListener("submit", async (event) => {
       event.preventDefault();
       const form = event.target;
       const formData = new FormData(form);
@@ -30,8 +41,18 @@ export async function setUpdateProfileFormListener() {
       profile.name = name;
       profile.email = email;
 
-      // Send it to the API
-      updateProfile(profile);
+      try {
+        // Send it to the API
+        const updatedProfile = await updateProfile(profile);
+
+        if (updatedProfile) {
+          window.location.href = "/profile";
+        } else {
+          console.error("Update failed"); 
+        }
+      } catch (error) {
+        console.error("Error updating profile", error); 
+      }
     });
   }
 }

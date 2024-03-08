@@ -1,33 +1,156 @@
+import { removePost } from "../api/posts/delete.mjs";
+
 const profileContainer = document.getElementById("profileContainer");
 
 export function profileTemplate(profileData) {
-    document.getElementById("profileName").textContent = profileData.name;
+  let containerDiv;
+
+  if (profileData.length > 0) {
+    const userProfile = profileData[0].author;
+
+    document.getElementById("profileName").textContent = userProfile.name;
+
+    const mainContainer = document.createElement("div");
+    mainContainer.className = "justify-content-center";
+
+    containerDiv = document.createElement("div");
+    containerDiv.className = "d-lg-flex flex-md-column flex-nowrap banner";
 
     const profileDiv = document.createElement("div");
-    profileDiv.className = 'col-lg-3 d-flex flex-column gap-3 align-items-center profile darker';
+    profileDiv.className =
+      "col-12 d-flex flex-column gap-3 align-items-center justify-content-center profile darker";
+
+    if (userProfile.banner) {
+      const profileBanner = document.createElement("div");
+      profileBanner.classList.add("profileBanner");
+
+      profileBanner.style.backgroundImage = `url('${userProfile.banner}')`;
+      profileBanner.style.backgroundSize = "cover";
+      profileDiv.appendChild(profileBanner);
+    }
 
     const followerText = document.createElement("p");
     followerText.className = "text-primary text-center mt-5";
-    followerText.textContent = "456 followers | 290 following";
+    followerText.textContent = userProfile.email;
+    userProfile.email;
 
-    const profileImage = document.createElement('img');
-    profileImage.src = profileData.avatar;
-    profileImage.alt = `avatar of user ${profileData.name}`;
-    profileImage.className = "profile";
+    if (userProfile.avatar) {
+      const profileImage = document.createElement("img");
+      profileImage.src = userProfile.avatar;
+      profileImage.alt = `avatar of user ${userProfile.name}`;
+      profileImage.className = "avatarUser";
+
+      if (!userProfile.banner) {
+        profileImage.style.position = "relative";
+        profileImage.style.marginTop = "0px";
+      }
+
+      profileDiv.appendChild(profileImage);
+    }
 
     const editButton = document.createElement("button");
-    editButton.type = "button"; 
+    editButton.type = "button";
     editButton.className = "btn btn-primary mb-3";
     editButton.textContent = "Edit Profile";
 
+    editButton.addEventListener("click", () => {
+      window.location.href = "/profile/edit";
+    });
+
     profileDiv.appendChild(followerText);
-    profileDiv.appendChild(profileImage);
     profileDiv.appendChild(editButton);
 
-    return profileDiv;
+    containerDiv.appendChild(profileDiv);
+
+    profileData.forEach((profileData) => {
+      const idLink = document.createElement("a");
+      idLink.href = "/post/?id=" + profileData.id;
+
+      const bgDiv = document.createElement("div");
+      bgDiv.className = "col-lg-11 bg-dark mt-3 mb-3 p-3 mx-auto text-center";
+
+      const postDiv = document.createElement("div");
+      postDiv.className = "d-md-flex flex-md-row justify-content-center";
+
+      const postContainer = document.createElement("div");
+      postContainer.className = "p-2";
+
+      if (profileData.media) {
+        const img = document.createElement("img");
+        img.src = profileData.media;
+        img.alt = `Image from ${profileData.title}`;
+        idLink.appendChild(img);
+      }
+
+      const dateObject = new Date(profileData.created);
+      const options = {
+        year: "numeric",
+        month: "numeric",
+        day: "numeric",
+        hour: "numeric",
+        minute: "numeric",
+      };
+      const formattedDate = dateObject.toLocaleString(undefined, options);
+
+      const published = document.createElement("p");
+      published.textContent = `Published: ${formattedDate}`;
+      published.classList.add("published");
+
+      const postTitle = document.createElement("h2");
+      postTitle.className = "text-center";
+      postTitle.textContent = profileData.title;
+
+      const postContent = document.createElement("p");
+      postContent.textContent = profileData.body;
+
+      const deleteButton = document.createElement("button");
+      deleteButton.type = "button";
+      deleteButton.className = "btn btn-primary";
+      deleteButton.textContent = "Delete ";
+
+      const trashIcon = document.createElement("i");
+      trashIcon.className = "fa-solid fa-trash";
+
+      deleteButton.appendChild(trashIcon);
+
+      deleteButton.addEventListener("click", () => {
+        // Show a Bootstrap modal for confirmation
+        const modal = new bootstrap.Modal(document.getElementById('deleteConfirmationModal'));
+        modal.show();
+      
+        // Handle the user's choice when the modal is closed
+        const confirmationButton = document.getElementById('confirmDeleteButton');
+        confirmationButton.addEventListener('click', async () => {
+          try {
+            // Call the removePost function to delete the post
+            await removePost(profileData.id);
+            // After successful deletion, reload the page or update the UI as needed
+            window.location.reload(); // This will refresh the page; you may want to use a different approach
+          } catch (error) {
+            console.error("Error deleting post", error);
+          } finally {
+            // Hide the modal
+            modal.hide();
+          }
+        });
+      });
+
+      idLink.appendChild(postTitle);
+      idLink.appendChild(postContent);
+      idLink.appendChild(published);
+      postContainer.appendChild(idLink); 
+      postContainer.appendChild(deleteButton)
+      postDiv.appendChild(postContainer); 
+      bgDiv.appendChild(postDiv);
+      containerDiv.appendChild(bgDiv); 
+      mainContainer.appendChild(containerDiv);
+    });
+    
+
+    return mainContainer;
+  }
 }
 
 export function renderProfileTemplates(profileData) {
-    profileContainer.append(profileTemplate(profileData));
-  }
-  
+  profileContainer.append(profileTemplate(profileData));
+}

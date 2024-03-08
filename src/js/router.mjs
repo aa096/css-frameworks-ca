@@ -5,7 +5,7 @@ export function router() {
 const path = location.pathname;
 
 switch (path) {
-    case "/profile/login/":
+    case "/index.html":
         listners.setLoginFormListener()
         return;
     case "/profile/register/":

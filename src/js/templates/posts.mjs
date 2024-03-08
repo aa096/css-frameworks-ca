@@ -1,14 +1,31 @@
+import { load } from "../storage/index.mjs";
+import { removePost } from "../api/posts/delete.mjs";
+
+document.addEventListener("DOMContentLoaded", function () {
+  const createPostButton = document.getElementById("createPostButton");
+  const createPostForm = document.getElementById("createPost");
+
+  createPostButton.addEventListener("click", function () {
+    // Toggle the visibility of the createPost form
+    createPostForm.classList.toggle("hidden");
+  });
+});
+
 const container1 = document.querySelector("#post-container");
 
 export function postTemplate(postData) {
+  const profile = load ("profile");
+
+  const isOwner = profile && postData.author.email === profile.email;
+
   const postContainer = document.createElement("div");
   postContainer.classList.add("justify-content-center");
 
   const idLink = document.createElement("a");
   idLink.href = "/post/?id=" + postData.id;
 
-  const div1 = document.createElement("div");
-  div1.classList.add("col-lg-11", "mx-auto", "bg-dark", "mt-3", "mb-3", "p-3");
+  const bgDark = document.createElement("div");
+  bgDark.classList.add("col-lg-11", "mx-auto", "bg-dark", "mt-3", "mb-3", "p-3");
 
   const innerDiv = document.createElement("div");
   innerDiv.classList.add(
@@ -58,6 +75,7 @@ export function postTemplate(postData) {
 
   userDiv.appendChild(h3User);
 
+
   if (postData.author.avatar) {
     const imgAvatar = document.createElement("img");
     imgAvatar.src = postData.author.avatar;
@@ -74,20 +92,69 @@ export function postTemplate(postData) {
     const img = document.createElement("img");
     img.src = postData.media;
     img.alt = `Image from ${postData.title}`;
-    p2Div.appendChild(img);
+    idLink.appendChild(img);
   }
 
-  p2Div.appendChild(h2Title);
-  p2Div.appendChild(pText);
-  p2Div.appendChild(published);
 
-  innerDiv.appendChild(p2Div);
-  div1.appendChild(innerDiv);
-  div1.appendChild(userDiv);
+idLink.appendChild(h2Title);
+idLink.appendChild(pText);
+idLink.appendChild(published);
+p2Div.appendChild(idLink); 
 
-  idLink.appendChild(div1);
+  if (isOwner) {
+    const editPostButton = document.createElement("button");
+    editPostButton.type = "button";
+    editPostButton.className = "btn btn-primary m-2";
+    editPostButton.textContent = "Edit ";
 
-  postContainer.appendChild(idLink);
+    const editIcon = document.createElement("i");
+    editIcon.className = "fa-solid fa-pen-to-square"; 
+
+    editPostButton.appendChild(editIcon);
+
+    editPostButton.addEventListener("click", () => {
+      window.location.href = `/post/edit/?id=${postData.id}`;
+    });
+
+    p2Div.appendChild(editPostButton);
+
+    const deleteButton = document.createElement("button");
+    deleteButton.type = "button";
+    deleteButton.className = "btn btn-primary";
+    deleteButton.textContent = "Delete ";
+
+    const trashIcon = document.createElement("i");
+    trashIcon.className = "fa-solid fa-trash";
+
+    deleteButton.appendChild(trashIcon);
+
+    deleteButton.addEventListener("click", () => {
+      const modal = new bootstrap.Modal(
+        document.getElementById("deleteConfirmationModal")
+      );
+      modal.show();
+
+      const confirmationButton = document.getElementById("confirmDeleteButton");
+      confirmationButton.addEventListener("click", async () => {
+        try {
+          await removePost(postData.id);
+          window.location.reload();
+        } catch (error) {
+          console.error("Error deleting post", error);
+        } finally {
+          modal.hide();
+        }
+      });
+    });
+
+    p2Div.appendChild(deleteButton);
+  }
+
+innerDiv.appendChild(p2Div);
+bgDark.appendChild(innerDiv);
+bgDark.appendChild(userDiv);
+
+postContainer.appendChild(bgDark);
 
   return postContainer;
 }

@@ -12,5 +12,16 @@ export async function createPost(postData) {
     body: JSON.stringify(postData),
   });
 
-  return await response.json();;
+  const responseData = await response.json();
+
+  // Check if the post was created successfully
+  if (response.ok) {
+    // If successful, refresh the window
+    window.location.reload();
+  } else {
+    // Handle the error or provide feedback to the user
+    console.error("Error creating post:", responseData.error);
+  }
+
+  return responseData;
 }

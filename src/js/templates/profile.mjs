@@ -115,37 +115,51 @@ export function profileTemplate(profileData) {
 
       deleteButton.addEventListener("click", () => {
         // Show a Bootstrap modal for confirmation
-        const modal = new bootstrap.Modal(document.getElementById('deleteConfirmationModal'));
+        const modal = new bootstrap.Modal(
+          document.getElementById("deleteConfirmationModal")
+        );
         modal.show();
-      
-        // Handle the user's choice when the modal is closed
-        const confirmationButton = document.getElementById('confirmDeleteButton');
-        confirmationButton.addEventListener('click', async () => {
+
+        const confirmationButton = document.getElementById(
+          "confirmDeleteButton"
+        );
+        confirmationButton.addEventListener("click", async () => {
           try {
-            // Call the removePost function to delete the post
             await removePost(profileData.id);
-            // After successful deletion, reload the page or update the UI as needed
-            window.location.reload(); // This will refresh the page; you may want to use a different approach
+            window.location.reload(); 
           } catch (error) {
             console.error("Error deleting post", error);
           } finally {
-            // Hide the modal
             modal.hide();
           }
         });
       });
 
+      const editPostButton = document.createElement("button");
+      editPostButton.type = "button";
+      editPostButton.className = "btn btn-primary m-2";
+      editPostButton.textContent = "Edit ";
+
+      const editIcon = document.createElement("i");
+      editIcon.className = "fa-solid fa-pen-to-square";
+
+      editPostButton.appendChild(editIcon);
+
+      editPostButton.addEventListener("click", () => {
+        window.location.href = `/post/edit/?id=${profileData.id}`;
+      });
+
       idLink.appendChild(postTitle);
       idLink.appendChild(postContent);
       idLink.appendChild(published);
-      postContainer.appendChild(idLink); 
-      postContainer.appendChild(deleteButton)
-      postDiv.appendChild(postContainer); 
+      postContainer.appendChild(idLink);
+      postContainer.appendChild(editPostButton);
+      postContainer.appendChild(deleteButton);
+      postDiv.appendChild(postContainer);
       bgDiv.appendChild(postDiv);
-      containerDiv.appendChild(bgDiv); 
+      containerDiv.appendChild(bgDiv);
       mainContainer.appendChild(containerDiv);
     });
-    
 
     return mainContainer;
   }

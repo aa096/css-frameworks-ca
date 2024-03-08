@@ -21,6 +21,7 @@ switch (path) {
         listners.setUpdateProfileFormListener()
         return;
     case "/posts/":
+        listners.setCreatePostFormListener()
         showPosts()
         return;
     case "/profile/":

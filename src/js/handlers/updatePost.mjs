@@ -18,15 +18,22 @@ export async function setUpdatePostFormListener() {
 
     button.disabled = false; 
 
-    form.addEventListener("submit", (event) => {
+    form.addEventListener("submit", async (event) => {
       event.preventDefault();
       const form = event.target;
       const formData = new FormData(form);
-      const post = Object.fromEntries(formData.entries());
-      post.id = id;
+      const updatedPost = Object.fromEntries(formData.entries());
+      updatedPost.id = id;
 
-      // Send it to the API
-      updatePost(post);
+      try {
+        // Send the updated post to the API
+        await updatePost(updatedPost);
+
+        // Redirect to the post detail page after successful update
+        window.location.href = `/post/?id=${id}`;
+      } catch (error) {
+        console.error("Error updating post", error);
+      }
     });
   }
 }

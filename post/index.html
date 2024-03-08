@@ -7,6 +7,7 @@
     <title id="title"></title>
     <link rel="icon" type="image/x-icon" href="../images/favicon.png">
     <link rel="stylesheet" href="../css/theme.css">
+    <script src="https://kit.fontawesome.com/07deee6de3.js" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js" integrity="sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4QzX+" crossorigin="anonymous"></script>
     <script src="/src/js/index.mjs" defer type="module"></script>
@@ -16,17 +17,17 @@
     <header>
         <nav class="navbar navbar-expand-lg navbar-dark bg-secondary">
             <div class="container-fluid">
-                <a class="navbar-brand smaller" href="../feed/index.html"><img src="/images/Logolarge.png" alt="CreativeShare"></a>
+                <a class="navbar-brand smaller" href="../posts/"><img src="/images/Logolarge.png" alt="CreativeShare"></a>
                 <button class="navbar-toggler me-4" type="button" data-bs-toggle="collapse" data-bs-target="#navbarToggler" aria-controls="navbarToggler" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
                 <div class="collapse navbar-collapse" id="navbarToggler">
                     <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                         <li class="nav-item">
-                            <a class="nav-link active" aria-current="page" href="#">FEED</a>
+                            <a class="nav-link" href="../posts/">FEED</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="../profile/index.html">PROFILE</a>
+                            <a class="nav-link" href="../profile/">PROFILE</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="/">LOG OUT</a>
@@ -46,9 +47,25 @@
                 </div>
             </div>
             <div class="container bg-white col-11 mb-5">
-                <div id="postContainer"> </div>
-
+                <div id="postContainer"></div>
         </section>
+        <div class="modal fade" id="deleteConfirmationModal" tabindex="-1" aria-labelledby="deleteConfirmationModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title" id="deleteConfirmationModalLabel">Delete Confirmation</h5>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                  <p>Are you sure you want to delete this post?</p>
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Cancel</button>
+                  <button type="button" class="btn btn-info" id="confirmDeleteButton">Delete <i class="fa-solid fa-trash"></i> </button>
+                </div>
+              </div>
+            </div>
+        </div>
     </main>  
 </body>
 </html>

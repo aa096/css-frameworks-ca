@@ -115,3 +115,12 @@ input:invalid + .help {
   color: #b6b6b6;
   font-size: 12px;
 }
+
+body {
+    overflow-x: hidden;
+}
+
+.hidden {
+    display: none;
+  }
+  

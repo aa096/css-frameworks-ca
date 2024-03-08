@@ -1,6 +1,6 @@
 import * as templates from "./templates/index.mjs"
 import * as postMethods from "./api/posts/index.mjs"
-import { getProfile, getProfilePost } from "./api/profiles/read.mjs";
+import { getProfilePost } from "./api/profiles/read.mjs";
 import { showError } from "./utils/error.mjs";
 import { load } from "./storage/index.mjs";
 

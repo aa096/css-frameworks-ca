@@ -1,6 +1,12 @@
+import { load } from "../storage/index.mjs";
+import { removePost } from "../api/posts/delete.mjs";
+
 const parentContainer = document.querySelector("#postContainer");
 
 export function postTemplate(postData) {
+  const profile = load("profile");
+  const isOwner = profile && postData.author.email === profile.email;
+
   const postContainer = document.createElement("div");
   postContainer.classList.add("justify-content-center");
 
@@ -74,7 +80,6 @@ export function postTemplate(postData) {
     p2Div.appendChild(img);
   }
 
-  parentContainer.appendChild(postContainer);
   p2Div.appendChild(h2Title);
   p2Div.appendChild(pText);
   p2Div.appendChild(published);
@@ -84,4 +89,55 @@ export function postTemplate(postData) {
   div1.appendChild(userDiv);
 
   postContainer.appendChild(div1);
+
+  if (isOwner) {
+    const editPostButton = document.createElement("button");
+    editPostButton.type = "button";
+    editPostButton.className = "btn btn-primary m-2";
+    editPostButton.textContent = "Edit ";
+
+    const editIcon = document.createElement("i");
+    editIcon.className = "fa-solid fa-pen-to-square";
+
+    editPostButton.appendChild(editIcon);
+
+    editPostButton.addEventListener("click", () => {
+      window.location.href = `/post/edit/?id=${postData.id}`;
+    });
+
+    p2Div.appendChild(editPostButton);
+
+    const deleteButton = document.createElement("button");
+    deleteButton.type = "button";
+    deleteButton.className = "btn btn-primary";
+    deleteButton.textContent = "Delete ";
+
+    const trashIcon = document.createElement("i");
+    trashIcon.className = "fa-solid fa-trash";
+
+    deleteButton.appendChild(trashIcon);
+
+    deleteButton.addEventListener("click", () => {
+      const modal = new bootstrap.Modal(
+        document.getElementById("deleteConfirmationModal")
+      );
+      modal.show();
+
+      const confirmationButton = document.getElementById("confirmDeleteButton");
+      confirmationButton.addEventListener("click", async () => {
+        try {
+          await removePost(postData.id);
+          window.location.href = '/posts/';
+        } catch (error) {
+          console.error("Error deleting post", error);
+        } finally {
+          modal.hide();
+        }
+      });
+    });
+
+    p2Div.appendChild(deleteButton);
+  }
+
+  parentContainer.appendChild(postContainer);
 }

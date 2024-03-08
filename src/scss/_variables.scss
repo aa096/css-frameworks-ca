@@ -13,7 +13,7 @@ $gray-300: #dee2e6 ;
 $gray-400: #ced4da ;
 $gray-500: #adb5bd ;
 $gray-600: #1F1C1C ;
-$gray-700: #495057 ;
+$gray-700: #495057 ; 
 $gray-800: #343a40 ;
 $gray-900: #212529 ;
 $black:    #000 ;
@@ -301,9 +301,9 @@ $cyans: (
 $primary:       #3A3A3A ;
 $secondary:     $gray-600 ;
 $success:       $green ;
-$info:          $cyan ;
+$info:          #1c1c1c ;
 $warning:       $yellow ;
-$danger:        $red ;
+$danger:        rgb(255, 115, 0) ;
 $light:         $gray-100 ;
 $dark:          $gray-900 ;
 // scss-docs-end theme-color-variables
@@ -406,11 +406,11 @@ $body-text-align:           null ;
 //
 // Style anchor elements.
 
-$link-color:                              $primary ;
-$link-decoration:                         underline ;
-$link-shade-percentage:                   20% ;
-$link-hover-color:                        shift-color($link-color, $link-shade-percentage) ;
-$link-hover-decoration:                   null ;
+$link-color:                              $white ;
+$link-decoration:                         none ;
+$link-shade-percentage:                   100% ;
+$link-hover-color:                        $primary ;
+$link-hover-decoration:                   none;
 
 $stretched-link-pseudo-element:           after ;
 $stretched-link-z-index:                  1 ;
@@ -600,7 +600,7 @@ $display-font-sizes: (
   2: 4.5rem,
   3: 4rem,
   4: 20px,
-  5: 18px,
+  5: 15px,
   6: 28px
 ) ;
 
@@ -826,7 +826,7 @@ $input-font-size-lg:                    $input-btn-font-size-lg ;
 
 $input-bg:                              #3A3A3A ;
 $input-disabled-color:                  null ;
-$input-disabled-bg:                     $gray-200 ;
+$input-disabled-bg:                     #8f8e8e;
 $input-disabled-border-color:           null ;
 
 $input-color:                          #ffff ;
@@ -844,7 +844,7 @@ $input-focus-color:                     $input-color ;
 $input-focus-width:                     $input-btn-focus-width ;
 $input-focus-box-shadow:                $input-btn-focus-box-shadow ;
 
-$input-placeholder-color:               $gray-600 ;
+$input-placeholder-color:               $white ;
 $input-plaintext-color:                 $body-color ;
 
 $input-height-border:                   $input-border-width * 2 ;
@@ -1398,7 +1398,7 @@ $modal-dialog-margin-y-sm-up:       1.75rem ;
 $modal-title-line-height:           $line-height-base ;
 
 $modal-content-color:               null ;
-$modal-content-bg:                  $white ;
+$modal-content-bg:                  #333333 ;
 $modal-content-border-color:        var(--#{$prefix}border-color-translucent) ;
 $modal-content-border-width:        $border-width ;
 $modal-content-border-radius:       $border-radius-lg ;

@@ -5,14 +5,23 @@ const action = "/posts";
 const method = "post";
 
 export async function createPost(postData) {
-    const createPostsURL = API_SOCIAL_URL + action;
+  const createPostsURL = API_SOCIAL_URL + action;
 
-    const response = await authFetch(createPostsURL, {
-        method,
-        body: JSON.stringify(postData)
-    })
+  const response = await authFetch(createPostsURL, {
+    method,
+    body: JSON.stringify(postData),
+  });
 
-    const post = await response.json();
+  const responseData = await response.json();
 
-    console.log(post);
+  // Check if the post was created successfully
+  if (response.ok) {
+    // If successful, refresh the window
+    window.location.reload();
+  } else {
+    // Handle the error or provide feedback to the user
+    console.error("Error creating post:", responseData.error);
+  }
+
+  return responseData;
 }

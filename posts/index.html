@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Craft your unique profile on Creative Share and showcase the evolution of your creative expression. Share your literary creations, connect with like-minded individuals, and build your creative legacy. Explore the depth of artistic storytelling on your personalized Creative Share profile.">
-    <title>Creative Share Profile: Showcase Your Creative Journey</title>
+    <meta name="description" content="Immerse yourself in the Creative Share Feed, a dynamic stream of creative texts from passionate minds around the world. Dive into a rich tapestry of stories, poetry, and imaginative expressions. Be inspired and inspire others in this vibrant community of creativity.">
+    <title>Creative Share Feed: Explore a Tapestry of Creativity</title>
     <link rel="icon" type="image/x-icon" href="../images/favicon.png">
     <link rel="stylesheet" href="../css/theme.css">
     <script src="https://kit.fontawesome.com/07deee6de3.js" crossorigin="anonymous"></script>
@@ -16,17 +16,17 @@
     <header>
         <nav class="navbar navbar-expand-lg navbar-dark bg-secondary">
             <div class="container-fluid">
-                <a class="navbar-brand smaller" href="/posts/"><img src="/images/Logolarge.png" alt="CreativeShare"></a>
+                <a class="navbar-brand smaller" href="../posts/"><img src="/images/Logolarge.png" alt="CreativeShare"></a>
                 <button class="navbar-toggler me-4" type="button" data-bs-toggle="collapse" data-bs-target="#navbarToggler" aria-controls="navbarToggler" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
                 <div class="collapse navbar-collapse" id="navbarToggler">
                     <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                         <li class="nav-item">
-                            <a class="nav-link" href="/posts/">FEED</a>
+                            <a class="nav-link active" aria-current="page" href="#">FEED</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link active" aria-current="page" href="#">PROFILE</a>
+                            <a class="nav-link" href="../profile/">PROFILE</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="/">LOG OUT</a>
@@ -35,20 +35,50 @@
                 </div>
             </div>
         </nav>
-    </header>
     <main>
         <section>
             <div class="container mt-3">
                 <div class="row text-center">
                     <div class="col-12">
                         <h1 class="display-1 mb-0">HELLO</h1>
-                        <h1 class="display-6" id="profileName"></h1>
+                        <h1 class="display-6">feel free to read.</h1>
                     </div>
                 </div>
             </div>
             <div class="container bg-white col-11 mb-5">
-                <div id="profileContainer"></div>
-            </div>
+                <div class="d-flex flex-no-wrap justify-content-end gap-2 mb-3">
+                    <form class="d-flex me-5" role="search">
+                        <input class="form-control me-2" type="search" aria-label="Search">
+                        <button class="btn btn-primary" type="submit">Search</button>
+                    </form>
+                    <button class="btn btn-primary dropdown-toggle me-4" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        Sort by: 
+                    </button>
+                        <ul class="dropdown-menu dropdown-menu-dark">
+                            <li><a class="dropdown-item active" href="#">Newest</a></li>
+                            <li><a class="dropdown-item" href="#">Oldest</a></li>
+                        </ul>
+                </div>
+                <div class="ms-5">
+                    <button id="createPostButton" class="btn btn-primary">Create Post <i class="fa-solid fa-caret-down" id="caretIcon"></i></button>
+                </div>
+                <form class="hidden mt-4" id="createPost">
+                    <div class="mb-3">
+                        <label for="" class="form-label">Title</label>
+                        <input type="text" name="title" class="form-control" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="" class="form-label">Body</label>
+                        <textarea name="body" class="form-control" required></textarea>
+                    </div>
+                    <div class="mb-3">
+                        <label for="" class="form-label">Media</label>
+                        <input type="url" name="media" class="form-control">
+                    </div>
+                    
+                    <button type="submit" class="btn btn-primary">Share Post</button>
+                </form>
+                    <div id="post-container"> </div>
         </section>
         <div class="modal fade" id="deleteConfirmationModal" tabindex="-1" aria-labelledby="deleteConfirmationModalLabel" aria-hidden="true">
             <div class="modal-dialog">
@@ -67,6 +97,6 @@
               </div>
             </div>
         </div>
-    </main>
+    </main>  
 </body>
 </html>

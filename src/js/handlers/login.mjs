@@ -12,8 +12,7 @@ export function setLoginFormListener() {
       // Send it to the API
       try {
         await login(profile);
-        window.location.href = "/posts/";
-      } catch (error) {
+      } catch (error) { 
         console.error("Login error:", error);
       }
     });

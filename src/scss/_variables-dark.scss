@@ -61,10 +61,10 @@ $mark-bg-dark:                      $yellow-800 ;
 // Forms
 //
 
-$form-select-indicator-color-dark:  $body-color-dark ;
+$form-select-indicator-color-dark:  #333333 ;
 $form-select-indicator-dark:        url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'><path fill='none' stroke='#{$form-select-indicator-color-dark}' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='m2 5 6 6 6-6'/></svg>") ;
 
-$form-switch-color-dark:            rgba($white, .25) ;
+$form-switch-color-dark:            #333333 ;
 $form-switch-bg-image-dark:         url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='-4 -4 8 8'><circle r='3' fill='#{$form-switch-color-dark}'/></svg>") ;
 
 // scss-docs-start form-validation-colors-dark

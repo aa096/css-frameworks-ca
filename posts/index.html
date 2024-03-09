@@ -51,13 +51,12 @@
                         <input class="form-control me-2" type="search" aria-label="Search">
                         <button class="btn btn-primary" type="submit">Search</button>
                     </form>
-                    <button class="btn btn-primary dropdown-toggle me-4" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-                        Sort by: 
-                    </button>
-                        <ul class="dropdown-menu dropdown-menu-dark">
-                            <li><a class="dropdown-item active" href="#">Newest</a></li>
-                            <li><a class="dropdown-item" href="#">Oldest</a></li>
-                        </ul>
+                        <label for="sortOptions">Sort by:</label>
+                        <select class="select text-center ps-2" id="sortOptions" aria-expanded="false">
+                            <option value="newestPosts">Newest Posts</option>
+                            <option value="oldestPosts">Oldest Posts</option>
+                            <option value="withImage">Posts with Image</option>
+                        </select>
                 </div>
                 <div class="ms-5">
                     <button id="createPostButton" class="btn btn-primary">Create Post <i class="fa-solid fa-caret-down" id="caretIcon"></i></button>

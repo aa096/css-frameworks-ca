@@ -166,3 +166,4 @@ postContainer.appendChild(bgDark);
 export function renderPostTemplates(postDataList) {
   container1.append(...postDataList.map(postTemplate));
 }
+

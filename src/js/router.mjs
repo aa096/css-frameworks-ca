@@ -23,6 +23,7 @@ switch (path) {
     case "/posts/":
         listners.setCreatePostFormListener()
         showPosts()
+        listners.handleFilterOption()
         return;
     case "/profile/":
         showProfile()

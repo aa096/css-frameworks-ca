@@ -1,6 +1,10 @@
 import { API_SOCIAL_URL } from "../constants.mjs";
 import * as storage from "../../storage/index.mjs";
 import { showErrorModal } from "../../utils/errorModal.mjs";
+import {
+  showLoadingIndicator,
+  hideLoadingIndicator,
+} from "../../utils/loadingIndicator.mjs";
 
 const action = "/auth/login";
 const method = "post";
@@ -10,6 +14,8 @@ export async function login(profile) {
   const body = JSON.stringify(profile);
 
   try {
+    showLoadingIndicator();
+
     const response = await fetch(loginURL, {
       headers: {
         "Content-Type": "application/json",
@@ -19,14 +25,17 @@ export async function login(profile) {
     });
 
     if (!response.ok) {
-      // Handle the case where login fails
       const errorResponse = await response.json();
 
-      // Display error in the modal
-      showErrorModal(errorResponse?.errors?.[0]?.message || "Login failed. Please try again.");
+      showErrorModal(
+        errorResponse?.errors?.[0]?.message || "Login failed. Please try again."
+      );
 
-      throw new Error(errorResponse?.errors?.[0]?.message || "Login failed. Please try again.");
+      throw new Error(
+        errorResponse?.errors?.[0]?.message || "Login failed. Please try again."
+      );
     }
+    hideLoadingIndicator();
 
     const { accessToken, ...user } = await response.json();
     storage.save("token", accessToken);
@@ -34,6 +43,7 @@ export async function login(profile) {
 
     window.location.href = "/posts/";
   } catch (error) {
+    hideLoadingIndicator();
     console.error("Login error:", error);
   }
 }

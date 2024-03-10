@@ -16,7 +16,7 @@ export async function setUpdatePostFormListener() {
     form.body.value = post.body;
     form.media.value = post.media;
 
-    button.disabled = false; 
+    button.disabled = false;
 
     form.addEventListener("submit", async (event) => {
       event.preventDefault();
@@ -26,10 +26,8 @@ export async function setUpdatePostFormListener() {
       updatedPost.id = id;
 
       try {
-        // Send the updated post to the API
         await updatePost(updatedPost);
 
-        // Redirect to the post detail page after successful update
         window.location.href = `/post/?id=${id}`;
       } catch (error) {
         console.error("Error updating post", error);

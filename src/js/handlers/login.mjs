@@ -12,7 +12,7 @@ export function setLoginFormListener() {
       // Send it to the API
       try {
         await login(profile);
-      } catch (error) { 
+      } catch (error) {
         console.error("Login error:", error);
       }
     });

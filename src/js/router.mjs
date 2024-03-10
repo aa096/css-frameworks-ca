@@ -2,33 +2,32 @@ import * as listners from "./handlers/index.mjs";
 import { showPosts, showProfile } from "./display.mjs";
 
 export function router() {
-const path = location.pathname;
+  const path = location.pathname;
 
-switch (path) {
+  switch (path) {
     case "/":
-        listners.setLoginFormListener()
-        return;
+      listners.setLoginFormListener();
+      return;
     case "/profile/register/":
-        listners.setRegisterFormListener()
-        return;
+      listners.setRegisterFormListener();
+      return;
     case "/post/create/":
-        listners.setCreatePostFormListener()
-        return;
+      listners.setCreatePostFormListener();
+      return;
     case "/post/edit/":
-        listners.setUpdatePostFormListener()
-        listners.setupGoBack()
-        return;
+      listners.setUpdatePostFormListener();
+      listners.setupGoBack();
+      return;
     case "/profile/edit/":
-        listners.setUpdateProfileFormListener()
-        return;
+      listners.setUpdateProfileFormListener();
+      return;
     case "/posts/":
-        listners.setCreatePostFormListener()
-        showPosts()
-        listners.handleFilterOption()
-        return;
+      listners.setCreatePostFormListener();
+      showPosts();
+      listners.handleFilterOption();
+      return;
     case "/profile/":
-        showProfile()
-        return;
-    }
+      showProfile();
+      return;
+  }
 }
-   

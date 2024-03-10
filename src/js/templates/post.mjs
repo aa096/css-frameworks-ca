@@ -127,7 +127,7 @@ export function postTemplate(postData) {
       confirmationButton.addEventListener("click", async () => {
         try {
           await removePost(postData.id);
-          window.location.href = '/posts/';
+          window.location.href = "/posts/";
         } catch (error) {
           console.error("Error deleting post", error);
         } finally {

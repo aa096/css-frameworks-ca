@@ -8,15 +8,13 @@ const params = new URLSearchParams(queryString);
 const id = params.get("id");
 
 async function displayPost() {
-    try { 
-        const result = await getPost(id);
-            getTitle(result);
-            postTemplate(result);
-        } 
-
-        catch (error) {
-            showError (error.message, "#postContainer");
-        }
+  try {
+    const result = await getPost(id);
+    getTitle(result);
+    postTemplate(result);
+  } catch (error) {
+    showError(error.message, "#postContainer");
+  }
 }
 
 displayPost();

@@ -25,11 +25,9 @@ export async function setUpdateProfileFormListener() {
       button.disabled = !avatarValue && !bannerValue;
     };
 
-    // Enable/disable the button on input changes
     form.avatar.addEventListener("input", updateButtonState);
     form.banner.addEventListener("input", updateButtonState);
 
-    // Initial button state
     updateButtonState();
 
     form.addEventListener("submit", async (event) => {
@@ -42,16 +40,15 @@ export async function setUpdateProfileFormListener() {
       profile.email = email;
 
       try {
-        // Send it to the API
         const updatedProfile = await updateProfile(profile);
 
         if (updatedProfile) {
           window.location.href = "/profile";
         } else {
-          console.error("Update failed"); 
+          console.error("Update failed");
         }
       } catch (error) {
-        console.error("Error updating profile", error); 
+        console.error("Error updating profile", error);
       }
     });
   }

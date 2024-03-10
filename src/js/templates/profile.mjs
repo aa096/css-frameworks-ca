@@ -114,7 +114,6 @@ export function profileTemplate(profileData) {
       deleteButton.appendChild(trashIcon);
 
       deleteButton.addEventListener("click", () => {
-        // Show a Bootstrap modal for confirmation
         const modal = new bootstrap.Modal(
           document.getElementById("deleteConfirmationModal")
         );
@@ -126,7 +125,7 @@ export function profileTemplate(profileData) {
         confirmationButton.addEventListener("click", async () => {
           try {
             await removePost(profileData.id);
-            window.location.reload(); 
+            window.location.reload();
           } catch (error) {
             console.error("Error deleting post", error);
           } finally {

@@ -1,6 +1,6 @@
 # css-frameworks-ca
 
-![image](./images/)
+![image](./images/creativeshare.png)
 
 A social media application called Creative Share
 

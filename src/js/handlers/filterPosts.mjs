@@ -1,4 +1,3 @@
-import { sortByImage } from "../api/posts/sortByImg.mjs";
 import { showError } from "../utils/error.mjs";
 import * as sorter from "../api/posts/index.mjs"
 import { showPosts } from "../display.mjs";
@@ -12,13 +11,13 @@ export async function handleFilterOption() {
         postsContainer.innerHTML = "";
 
         if (selectedValue === "withImage") {
-            await sorter.sortByImage(postsContainer);
+            sorter.sortByImage(postsContainer);
         }
         if (selectedValue === "oldestPosts") {
-            await sorter.sortOldestPosts(postsContainer);
+            sorter.sortOldestPosts(postsContainer);
         }
         if (selectedValue === "newestPosts") {
-            await showPosts(postsContainer);
+            showPosts(postsContainer);
         }
 
     } catch (error) {

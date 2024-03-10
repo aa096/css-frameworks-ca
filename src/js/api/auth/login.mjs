@@ -9,6 +9,29 @@ import {
 const action = "/auth/login";
 const method = "post";
 
+/**
+ * Performs user login by sending a POST request to the authentication endpoint.
+ *
+ * @param {Object} profile - User profile object containing necessary information for login.
+ * @param {string} profile.username - User's username.
+ * @param {string} profile.password - User's password.
+ *
+ * @throws {Error} Throws an error if the login request fails.
+ *
+ * @returns {Promise<void>} A promise that resolves when the login is successful.
+ *
+ * @example
+ * const userProfile = {
+ *   username: 'exampleUser',
+ *   password: 'examplePassword',
+ * };
+ * try {
+ *   await login(userProfile);
+ * } catch (error) {
+ *   console.error('Login failed:', error);
+ * }
+ */
+
 export async function login(profile) {
   const loginURL = API_SOCIAL_URL + action;
   const body = JSON.stringify(profile);

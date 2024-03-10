@@ -4,6 +4,24 @@ import { showError } from "../../utils/error.mjs";
 
 const postsContainer = document.querySelector("#post-container");
 
+/**
+ * Sorts and renders posts that contain images by making use of the getPosts, renderPostTemplates,
+ * and showError functions.
+ *
+ * @param {Object} postData - The data for a post.
+ * @param {Array<Object>} postData.media - An array of media objects representing images.
+ * @returns {boolean} Returns true if the post contains images, otherwise false.
+ * @throws {Error} If there is an issue fetching posts or rendering templates.
+ *
+ * @example
+ * try {
+ *   await sortByImage();
+ *   console.log("Posts sorted and rendered successfully.");
+ * } catch (error) {
+ *   console.error("Error sorting and rendering posts:", error.message);
+ * }
+ */
+
 export async function sortByImage() {
     try {
         const posts = await getPosts();

@@ -20,11 +20,13 @@ export async function handleFilterOption() {
         if (selectedValue === "newestPosts") {
             await showPosts(postsContainer);
         }
-        
+
     } catch (error) {
         console.error()
         showError(error.message, "#post-container");
     }
 }
-
+ 
+if (sortBy) {
 sortBy.addEventListener("change", handleFilterOption);
+}

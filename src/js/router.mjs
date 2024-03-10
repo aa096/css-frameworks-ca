@@ -16,6 +16,7 @@ switch (path) {
         return;
     case "/post/edit/":
         listners.setUpdatePostFormListener()
+        listners.setupGoBack()
         return;
     case "/profile/edit/":
         listners.setUpdateProfileFormListener()

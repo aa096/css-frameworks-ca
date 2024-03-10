@@ -19,7 +19,6 @@ const container1 = document.querySelector("#post-container");
 
 export function postTemplate(postData) {
   const profile = load ("profile");
-
   const isOwner = profile && postData.author.email === profile.email;
 
   const postContainer = document.createElement("div");
@@ -160,10 +159,19 @@ bgDark.appendChild(userDiv);
 
 postContainer.appendChild(bgDark);
 
+  
   return postContainer;
+
 }
+
+
+// export function renderPostTemplates(postDataList) {
+//   container1.append(...postDataList.map(postTemplate));
+// }
 
 export function renderPostTemplates(postDataList) {
-  container1.append(...postDataList.map(postTemplate));
+  container1.innerHTML = ""; 
+  postDataList.forEach((postData) => {
+    container1.appendChild(postTemplate(postData));
+  });
 }
-

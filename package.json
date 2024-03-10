@@ -4,9 +4,10 @@
   "description": "A starting point for the CSS Frameworks CA project",
   "scripts": {
     "test": "echo \"We will learn more about testing in the Workflow course\" && exit 1",
+    "copyJS": "npx copyfiles -f node_modules/bootstrap/dist/js/bootstrap.bundle.min.js dist",
     "build": "sass src/scss:css",
     "watch": "sass --watch src/scss:css",
-    "dev": "npm run watch & live-server"
+    "start": "npm run build && live-server"
   },
   "repository": {
     "type": "git",

@@ -1,3 +1,3 @@
-import { setRegisterFormListener } from "./handlers/register.mjs";
+import { router } from "./router.mjs";
 
-setRegisterFormListener()
+router();
